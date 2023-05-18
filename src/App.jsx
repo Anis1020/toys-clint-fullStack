@@ -1,13 +1,14 @@
 import { Outlet } from "react-router-dom";
 import "./App.css";
-import NavBar from "./Pages/HomePages/NavBar";
+
 import Footer from "./Pages/HomePages/Footer";
+import NavBar from "./Pages/NavBar/NavBar";
 
 function App() {
   return (
     <>
       <NavBar></NavBar>
-      <div className="h-screen ">
+      <div className="h-full ">
         <Outlet />
       </div>
       <Footer />
