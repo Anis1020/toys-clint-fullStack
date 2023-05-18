@@ -1,9 +1,16 @@
+import { Outlet } from "react-router-dom";
 import "./App.css";
+import NavBar from "./Pages/HomePages/NavBar";
+import Footer from "./Pages/HomePages/Footer";
 
 function App() {
   return (
     <>
-      <h1>Vite + React</h1>
+      <NavBar></NavBar>
+      <div className="h-screen ">
+        <Outlet />
+      </div>
+      <Footer />
     </>
   );
 }
