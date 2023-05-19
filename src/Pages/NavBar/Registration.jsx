@@ -36,6 +36,7 @@ const Registration = () => {
             </label>
             <input
               type="text"
+              required
               name="Name"
               placeholder="Name"
               className="input input-bordered"
@@ -46,7 +47,8 @@ const Registration = () => {
               <span className="label-text text-black">Email</span>
             </label>
             <input
-              type="text"
+              type="email"
+              required
               name="email"
               placeholder="email"
               className="input input-bordered"
@@ -58,6 +60,7 @@ const Registration = () => {
             </label>
             <input
               type="password"
+              required
               name="password"
               placeholder="password"
               className="input input-bordered"
@@ -68,7 +71,7 @@ const Registration = () => {
               <span className="label-text text-black">Photo</span>
             </label>
             <input
-              type="text"
+              type="url"
               name="photo"
               placeholder="Photo URL"
               className="input input-bordered"
