@@ -4,8 +4,7 @@ import { AuthContext } from "../../Routers/AuthProvider";
 
 const LoginPage = () => {
   const [error, setError] = useState("");
-  const { loginUser, createUserByGoogle, createUserByGithub } =
-    useContext(AuthContext);
+  const { loginUser, createUserByGoogle } = useContext(AuthContext);
 
   const location = useLocation();
   const navigate = useNavigate();
@@ -29,15 +28,6 @@ const LoginPage = () => {
 
   const handleGoogleSignUp = () => {
     createUserByGoogle()
-      .then((result) => {
-        console.log(result);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  };
-  const handleGithubSignUp = () => {
-    createUserByGithub()
       .then((result) => {
         console.log(result);
       })
@@ -88,12 +78,6 @@ const LoginPage = () => {
           className="btn btn-wide btn-outline text-black m-auto"
         >
           Google
-        </button>
-        <button
-          onClick={handleGithubSignUp}
-          className="btn btn-wide btn-outline text-black m-auto"
-        >
-          Github
         </button>
       </div>
     </div>

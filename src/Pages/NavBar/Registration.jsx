@@ -83,7 +83,7 @@ const Registration = () => {
         </form>
 
         <p className="text-black">
-          Are you new to this website?{" "}
+          Already have an account?{" "}
           <Link className="btn btn-link" to="/login">
             Login
           </Link>{" "}
@@ -91,9 +91,6 @@ const Registration = () => {
         <div className="divider text-white rounded bg-black">OR</div>
         <button className="btn btn-wide btn-outline text-black m-auto">
           Google
-        </button>
-        <button className="btn btn-wide btn-outline text-black m-auto">
-          Github
         </button>
       </div>
     </div>
