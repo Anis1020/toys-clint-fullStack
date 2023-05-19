@@ -63,8 +63,8 @@ const NavBar = () => {
           {user && (
             <>
               {" "}
-              <img className="h-8 rounded" src={img} alt="" />
               <button onClick={handleLogOut}>Log out</button>{" "}
+              <img className="h-8 rounded" src={img} alt="" />
             </>
           )}
         </div>
