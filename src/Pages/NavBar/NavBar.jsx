@@ -1,11 +1,22 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../Routers/AuthProvider";
+import img from "../../assets/profileimg.png";
 
 const NavBar = () => {
+  const { user, logOutUser } = useContext(AuthContext);
+  const handleLogOut = () => {
+    logOutUser()
+      .then()
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
   return (
-    <div>
-      <div className="navbar bg-base-100">
-        <div className="navbar-start">
+    <>
+      <div className="navbar bg-base-100 flex justify-between">
+        <div className="">
           <div className="dropdown">
             <label tabIndex={0} className="btn btn-ghost lg:hidden">
               <svg
@@ -37,7 +48,7 @@ const NavBar = () => {
           </div>
           <a className="btn btn-ghost normal-case text-xl">Toys Bazar</a>
         </div>
-        <div className="navbar-end hidden lg:flex">
+        <div className=" hidden lg:flex">
           <ul className="menu menu-horizontal px-1 space-x-7">
             <Link to="/">Home</Link>
             <Link to="/allToys">All Toys</Link>
@@ -48,8 +59,17 @@ const NavBar = () => {
             <Link to="/registration">Registration</Link>
           </ul>
         </div>
+        <div className="flex gap-3">
+          {user && (
+            <>
+              {" "}
+              <img className="h-8 rounded" src={img} alt="" />
+              <button onClick={handleLogOut}>Log out</button>{" "}
+            </>
+          )}
+        </div>
       </div>
-    </div>
+    </>
   );
 };
 

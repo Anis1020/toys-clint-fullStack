@@ -1,17 +1,62 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useContext, useState } from "react";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import { AuthContext } from "../../Routers/AuthProvider";
 
 const LoginPage = () => {
+  const [error, setError] = useState("");
+  const { loginUser, createUserByGoogle, createUserByGithub } =
+    useContext(AuthContext);
+
+  const location = useLocation();
+  const navigate = useNavigate();
+  const from = location?.state?.from?.pathname || "/";
+
+  const handleLogin = (event) => {
+    event.preventDefault();
+    const form = event.target;
+    const email = form.email.value;
+    const password = form.password.value;
+    console.log(email, password);
+    loginUser(email, password)
+      .then((result) => {
+        console.log("wrig info", result.user);
+        navigate(from, { replace: true });
+      })
+      .catch((error) => {
+        setError("wrong information", error);
+      });
+  };
+
+  const handleGoogleSignUp = () => {
+    createUserByGoogle()
+      .then((result) => {
+        console.log(result);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+  const handleGithubSignUp = () => {
+    createUserByGithub()
+      .then((result) => {
+        console.log(result);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
   return (
     <div>
       <div className="card-body w-6/12 m-auto shadow-2xl bg-slate-300 my-5 rounded">
-        <form>
+        <form onSubmit={handleLogin}>
           <div className="form-control">
             <label className="label">
               <span className="label-text text-black">Email</span>
             </label>
             <input
               type="text"
+              name="email"
               placeholder="email"
               className="input input-bordered"
             />
@@ -22,6 +67,7 @@ const LoginPage = () => {
             </label>
             <input
               type="text"
+              name="password"
               placeholder="password"
               className="input input-bordered"
             />
@@ -37,10 +83,16 @@ const LoginPage = () => {
           </Link>{" "}
         </p>
         <div className="divider text-white rounded bg-black">OR</div>
-        <button className="btn btn-wide btn-outline text-black m-auto">
+        <button
+          onClick={handleGoogleSignUp}
+          className="btn btn-wide btn-outline text-black m-auto"
+        >
           Google
         </button>
-        <button className="btn btn-wide btn-outline text-black m-auto">
+        <button
+          onClick={handleGithubSignUp}
+          className="btn btn-wide btn-outline text-black m-auto"
+        >
           Github
         </button>
       </div>
