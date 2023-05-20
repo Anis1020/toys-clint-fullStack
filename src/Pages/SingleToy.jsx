@@ -17,13 +17,13 @@ const SingleToy = ({ toy, handleDelete }) => {
           <td>{price}</td>
           <td>{quantity}</td>
           <td className="flex justify-end">
-            {/* <Link to={`/viewDetails/${_id}`}>
+            <Link to={`/viewDetails/${_id}`}>
               <button className="btn btn-accent">View Details</button>
-            </Link> */}
-            <a href="#my-modal-2" className="btn">
-              View Details
-            </a>
-            {/* <label htmlFor="my-modal-5" className="btn">open modal</label> */}
+            </Link>
+
+            {/* <a href="#my-modal-2" className="btn">
+                View Details{" "}
+              </a> */}
 
             <button
               onClick={() => handleDelete(_id)}
@@ -37,10 +37,10 @@ const SingleToy = ({ toy, handleDelete }) => {
       </tbody>
 
       {/* modal start here */}
-      <div className="modal" id="my-modal-2">
+      {/* <div className="modal" id="my-modal-2">
         <div className="modal-box">
           <img src={photo} alt="" />
-          <h3 className="font-bold text-lg">seller name {seller}</h3>
+          <h3 className="font-bold text-lg">seller name: {seller}</h3>
           <p className="py-4">
             You've been selected for a chance to get one year of subscription to
             use Wikipedia for free!
@@ -51,7 +51,7 @@ const SingleToy = ({ toy, handleDelete }) => {
             </a>
           </div>
         </div>
-      </div>
+      </div> */}
     </>
   );
 };

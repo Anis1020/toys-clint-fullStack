@@ -24,7 +24,8 @@ const router = createBrowserRouter([
       {
         path: "allToys",
         element: <AllToys />,
-        loader: () => fetch("http://localhost:5000/alltoys"),
+        loader: () =>
+          fetch("https://assignment-11-server-site-kappa.vercel.app/alltoys"),
       },
       {
         path: "myToys",
@@ -52,7 +53,9 @@ const router = createBrowserRouter([
           </PrivetRouter>
         ),
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/alltoys/${params._id}`),
+          fetch(
+            `https://assignment-11-server-site-kappa.vercel.app/alltoys/${params._id}`
+          ),
       },
       {
         path: "login",

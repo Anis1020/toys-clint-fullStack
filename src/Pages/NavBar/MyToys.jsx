@@ -5,7 +5,7 @@ const MyToys = () => {
   const { user } = useContext(AuthContext);
   const [myToys, setMyToys] = useState([]);
   // console.log(myToys);
-  const url = `http://localhost:5000/mytoys?email=${user.email}`;
+  const url = `https://assignment-11-server-site-kappa.vercel.app/mytoys?email=${user.email}`;
   useEffect(() => {
     fetch(url)
       .then((res) => res.json())

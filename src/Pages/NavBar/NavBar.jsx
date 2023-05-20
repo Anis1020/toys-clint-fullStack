@@ -53,8 +53,12 @@ const NavBar = () => {
           <ul className="menu menu-horizontal px-1 space-x-7">
             <ActiveLink to="/">Home</ActiveLink>
             <ActiveLink to="/allToys">All Toys</ActiveLink>
-            {user && <ActiveLink to="/myToys">My Toys</ActiveLink>}
-            <ActiveLink to="/addAToys">Add A Toys</ActiveLink>
+            {user && (
+              <>
+                <ActiveLink to="/myToys">My Toys</ActiveLink>
+                <ActiveLink to="/addAToys">Add A Toys</ActiveLink>
+              </>
+            )}
             <ActiveLink to="/blog">Blog</ActiveLink>
             <ActiveLink to="/login">Login</ActiveLink>
             <ActiveLink to="/registration">Registration</ActiveLink>

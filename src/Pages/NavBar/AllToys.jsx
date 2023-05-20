@@ -10,7 +10,7 @@ const AllToys = () => {
 
   // setAllToys(allToy);
   const handleDelete = (id) => {
-    fetch(`http://localhost:5000/delete/${id}`, {
+    fetch(`https://assignment-11-server-site-kappa.vercel.app/delete/${id}`, {
       method: "DELETE",
     })
       .then((res) => res.json())
