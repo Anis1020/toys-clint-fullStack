@@ -8,6 +8,7 @@ const AllToys = () => {
   const allToy = useLoaderData();
   console.log(allToy);
 
+  // setAllToys(allToy);
   const handleDelete = (id) => {
     fetch(`http://localhost:5000/delete/${id}`, {
       method: "DELETE",
@@ -18,6 +19,7 @@ const AllToys = () => {
         toast("Your item deleted successfully", result);
         if (result.deletedCount > 0) {
           const remaining = allToy.filter((toys) => toys._id !== id);
+          setAllToys(remaining);
         }
         // const deleted = allToy.filter((toys) => toys._id != id);
         // console.log(deleted);
@@ -26,8 +28,6 @@ const AllToys = () => {
   };
   return (
     <>
-      <h2>all toys {allToy.length}</h2>
-
       <div className="overflow-x-auto">
         <table className="table w-full">
           {/* head */}
@@ -49,22 +49,6 @@ const AllToys = () => {
               handleDelete={handleDelete}
             ></SingleToy>
           ))}
-
-          {/* <tbody>
-        
-            <tr>
-              <th>1</th>
-              <td>Cy Ganderton</td>
-              <td>Quality Control Specialist</td>
-              <td>Blue</td>
-              <td>Blue</td>
-              <td>Blue</td>
-              <td>
-                {" "}
-                <button className="btn btn-accent">View Details</button>{" "}
-              </td>
-            </tr>
-          </tbody> */}
         </table>
       </div>
     </>

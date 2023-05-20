@@ -9,6 +9,7 @@ import Blog from "../Pages/NavBar/Blog";
 import LoginPage from "../Pages/NavBar/LoginPage";
 import Registration from "../Pages/NavBar/Registration";
 import PrivetRouter from "./PrivetRouter";
+import ViewDetails from "../Pages/ViewDetails";
 
 const router = createBrowserRouter([
   {
@@ -42,6 +43,16 @@ const router = createBrowserRouter([
             <Blog />
           </PrivetRouter>
         ),
+      },
+      {
+        path: "viewDetails/:_id",
+        element: (
+          <PrivetRouter>
+            <ViewDetails></ViewDetails>
+          </PrivetRouter>
+        ),
+        loader: ({ params }) =>
+          fetch(`http://localhost:5000/alltoys/${params._id}`),
       },
       {
         path: "login",
