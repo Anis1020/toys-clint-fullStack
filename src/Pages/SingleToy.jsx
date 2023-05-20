@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const SingleToy = ({ toy, handleDelete }) => {
   const { seller, category, price, quantity, toyName, _id } = toy;
@@ -22,6 +24,7 @@ const SingleToy = ({ toy, handleDelete }) => {
             >
               X
             </button>
+            <ToastContainer />
           </td>
         </tr>
       </tbody>

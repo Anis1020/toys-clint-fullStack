@@ -1,5 +1,7 @@
 import React, { useContext } from "react";
 import { AuthContext } from "../../Routers/AuthProvider";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const AddAToys = () => {
   const { user } = useContext(AuthContext);
@@ -33,6 +35,7 @@ const AddAToys = () => {
       .then((res) => res.json())
       .then((result) => {
         console.log(result);
+        toast("Your toy is added successfully!");
       });
   };
 
@@ -98,6 +101,7 @@ const AddAToys = () => {
           </div>
         </div>
       </form>
+      <ToastContainer />
     </div>
   );
 };

@@ -1,18 +1,24 @@
 import React, { useState } from "react";
 import { useLoaderData } from "react-router-dom";
 import SingleToy from "../SingleToy";
+import { ToastContainer, toast } from "react-toastify";
 
 const AllToys = () => {
   const [alltoys, setAllToys] = useState(true);
   const allToy = useLoaderData();
   console.log(allToy);
+
   const handleDelete = (id) => {
     fetch(`http://localhost:5000/delete/${id}`, {
       method: "DELETE",
     })
       .then((res) => res.json())
       .then((result) => {
-        alert("successfully deleted", result);
+        // console.log(result);
+        toast("Your item deleted successfully", result);
+        if (result.deletedCount > 0) {
+          const remaining = allToy.filter((toys) => toys._id !== id);
+        }
         // const deleted = allToy.filter((toys) => toys._id != id);
         // console.log(deleted);
         // setAllToys(deleted);
