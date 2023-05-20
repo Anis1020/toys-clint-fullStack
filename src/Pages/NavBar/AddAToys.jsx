@@ -13,11 +13,13 @@ const AddAToys = () => {
     const category = form.category.value;
     const price = form.price.value;
     const quantity = form.quantity.value;
+    const description = form.description.value;
     const photo = form.photo.value;
     const toyInfo = {
       seller,
       toyName,
       category,
+      description,
       price,
       quantity,
       photo,
@@ -25,7 +27,7 @@ const AddAToys = () => {
     };
     console.log(toyInfo);
 
-    fetch("http://localhost:5000/toys", {
+    fetch("https://assignment-11-server-site-kappa.vercel.app/toys", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -42,7 +44,7 @@ const AddAToys = () => {
   return (
     <div>
       <form onSubmit={handleAddToys}>
-        <div className="card-body">
+        <div className="card-body grid md:grid-cols-2">
           <div className="form-control">
             <label className="label">
               <span className="label-text">Seller</span>
@@ -84,21 +86,33 @@ const AddAToys = () => {
               name="quantity"
               className="input input-bordered"
             />
-          </div>{" "}
+          </div>
           <div className="form-control">
             <label className="label">
-              <span className="label-text">Photo Url</span>
+              <span className="label-text">Add a Description</span>
             </label>
-            <input
-              type="url"
-              name="photo"
-              required
+            <textarea
+              type="text"
+              name="description"
               className="input input-bordered"
-            />
+              cols="30"
+              rows="10"
+            ></textarea>
           </div>
-          <div className="form-control mt-6">
-            <button className="btn btn-primary">Add A Toy</button>
-          </div>
+        </div>
+        <div className="form-control px-8">
+          <label className="label">
+            <span className="label-text">Photo Url</span>
+          </label>
+          <input
+            type="url"
+            name="photo"
+            required
+            className="input input-bordered "
+          />
+        </div>{" "}
+        <div className="form-control my-6 px-8">
+          <button className="btn btn-primary">Add A Toy</button>
         </div>
       </form>
       <ToastContainer />

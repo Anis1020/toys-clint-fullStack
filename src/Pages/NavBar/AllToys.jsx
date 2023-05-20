@@ -1,29 +1,23 @@
 import React, { useState } from "react";
 import { useLoaderData } from "react-router-dom";
 import SingleToy from "../SingleToy";
-import { ToastContainer, toast } from "react-toastify";
+import { toast } from "react-toastify";
 
 const AllToys = () => {
-  const [alltoys, setAllToys] = useState(true);
   const allToy = useLoaderData();
-  console.log(allToy);
+  const [alltoys, setAllToys] = useState(allToy);
 
-  // setAllToys(allToy);
   const handleDelete = (id) => {
     fetch(`https://assignment-11-server-site-kappa.vercel.app/delete/${id}`, {
       method: "DELETE",
     })
       .then((res) => res.json())
       .then((result) => {
-        // console.log(result);
         toast("Your item deleted successfully", result);
         if (result.deletedCount > 0) {
           const remaining = allToy.filter((toys) => toys._id !== id);
           setAllToys(remaining);
         }
-        // const deleted = allToy.filter((toys) => toys._id != id);
-        // console.log(deleted);
-        // setAllToys(deleted);
       });
   };
   return (
@@ -42,7 +36,7 @@ const AllToys = () => {
               <th></th>
             </tr>
           </thead>
-          {allToy.map((toy, index) => (
+          {alltoys.map((toy, index) => (
             <SingleToy
               key={allToy._id}
               toy={toy}

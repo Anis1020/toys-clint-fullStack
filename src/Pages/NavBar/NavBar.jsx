@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../Routers/AuthProvider";
 import img from "../../assets/profileimg.png";
+import logo from "../../assets/logo.avif";
 import ActiveLink from "../../Components/ActiveLink";
 
 const NavBar = () => {
@@ -47,6 +48,7 @@ const NavBar = () => {
               <Link to="/blog">Blog</Link>
             </ul>
           </div>
+          <img className="w-8 rounded-full" src={logo} alt="" />
           <a className="btn btn-ghost normal-case text-xl">Toys Bazar</a>
         </div>
         <div className=" hidden lg:flex">
