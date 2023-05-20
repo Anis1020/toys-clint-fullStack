@@ -13,6 +13,7 @@ const AddAToys = () => {
     const category = form.category.value;
     const price = form.price.value;
     const quantity = form.quantity.value;
+    const rating = form.rating.value;
     const description = form.description.value;
     const photo = form.photo.value;
     const toyInfo = {
@@ -22,6 +23,7 @@ const AddAToys = () => {
       description,
       price,
       quantity,
+      rating,
       photo,
       email: user?.email,
     };
@@ -99,18 +101,30 @@ const AddAToys = () => {
               rows="10"
             ></textarea>
           </div>
+          <div className="form-control ">
+            <label className="label">
+              <span className="label-text">Photo Url</span>
+            </label>
+            <input
+              type="url"
+              name="photo"
+              required
+              className="input input-bordered "
+            />
+          </div>
+          <div className="form-control">
+            <label className="label">
+              <span className="label-text">Rating</span>
+            </label>
+            <input
+              type="text"
+              name="rating"
+              required
+              className="input input-bordered "
+            />
+          </div>
         </div>
-        <div className="form-control px-8">
-          <label className="label">
-            <span className="label-text">Photo Url</span>
-          </label>
-          <input
-            type="url"
-            name="photo"
-            required
-            className="input input-bordered "
-          />
-        </div>{" "}
+
         <div className="form-control my-6 px-8">
           <button className="btn btn-primary">Add A Toy</button>
         </div>

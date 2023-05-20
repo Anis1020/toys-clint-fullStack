@@ -15,6 +15,7 @@ const AllToys = () => {
       .then((result) => {
         toast("Your item deleted successfully", result);
         if (result.deletedCount > 0) {
+          confirm("Are yuo sure delete");
           const remaining = allToy.filter((toys) => toys._id !== id);
           setAllToys(remaining);
         }
@@ -23,6 +24,20 @@ const AllToys = () => {
   return (
     <>
       <div className="overflow-x-auto">
+        <div className="text-center my-8 space-x-4">
+          <input
+            className="p-2 rounded-full"
+            type="search"
+            name="search"
+            id=""
+            placeholder="type-here"
+          />
+          <input
+            className="p-2 px-6 btn rounded-full"
+            type="submit"
+            value="Search"
+          />
+        </div>
         <table className="table w-full">
           {/* head */}
           <thead>

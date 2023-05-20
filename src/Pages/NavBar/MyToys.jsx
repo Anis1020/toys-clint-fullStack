@@ -14,7 +14,7 @@ const MyToys = () => {
       });
   }, []);
   return (
-    <div className=" shadow-2xl grid md:grid-cols-3 gap-8">
+    <div className=" shadow-2xl grid md:grid-cols-3 my-8 gap-8">
       {myToys.map((toy) => (
         <div className="card card-compact  w-full bg-base-100 shadow-xl">
           <figure>
@@ -22,11 +22,12 @@ const MyToys = () => {
           </figure>
 
           <div className="card-body">
-            <h2 className="card-title">{toy?.seller}</h2>
-            <p>{toy?.toyName}</p>
-            <p>price: ${toy?.price}</p>
-            <div className="card-actions justify-end">
+            <h2 className="card-title">Price: ${toy?.price}</h2>
+            <p>Quantity: {toy?.quantity}</p>
+            <p>Description: {toy?.description}</p>
+            <div className="card-actions justify-around my-5">
               <button className="btn btn-primary">Edit Now</button>
+              <button className="btn btn-primary">Delete</button>
             </div>
           </div>
         </div>
