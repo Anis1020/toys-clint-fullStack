@@ -1,18 +1,21 @@
-import React from "react";
+import React, { useState } from "react";
 import { useLoaderData } from "react-router-dom";
 import SingleToy from "../SingleToy";
 
 const AllToys = () => {
+  const [alltoys, setAllToys] = useState(true);
   const allToy = useLoaderData();
   console.log(allToy);
   const handleDelete = (id) => {
-    alert("are you sure deleted");
     fetch(`http://localhost:5000/delete/${id}`, {
       method: "DELETE",
     })
       .then((res) => res.json())
       .then((result) => {
         alert("successfully deleted", result);
+        // const deleted = allToy.filter((toys) => toys._id != id);
+        // console.log(deleted);
+        // setAllToys(deleted);
       });
   };
   return (

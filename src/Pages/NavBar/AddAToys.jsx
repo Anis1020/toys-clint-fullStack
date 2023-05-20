@@ -1,6 +1,8 @@
-import React from "react";
+import React, { useContext } from "react";
+import { AuthContext } from "../../Routers/AuthProvider";
 
 const AddAToys = () => {
+  const { user } = useContext(AuthContext);
   const handleAddToys = (event) => {
     event.preventDefault();
     const form = event.target;
@@ -9,12 +11,15 @@ const AddAToys = () => {
     const category = form.category.value;
     const price = form.price.value;
     const quantity = form.quantity.value;
+    const photo = form.photo.value;
     const toyInfo = {
       seller,
       toyName,
       category,
       price,
       quantity,
+      photo,
+      email: user?.email,
     };
     console.log(toyInfo);
 
@@ -74,6 +79,17 @@ const AddAToys = () => {
             <input
               type="text"
               name="quantity"
+              className="input input-bordered"
+            />
+          </div>{" "}
+          <div className="form-control">
+            <label className="label">
+              <span className="label-text">Photo Url</span>
+            </label>
+            <input
+              type="url"
+              name="photo"
+              required
               className="input input-bordered"
             />
           </div>

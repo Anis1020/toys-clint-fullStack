@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../Routers/AuthProvider";
 import img from "../../assets/profileimg.png";
+import ActiveLink from "../../Components/ActiveLink";
 
 const NavBar = () => {
   const { user, logOutUser } = useContext(AuthContext);
@@ -50,13 +51,13 @@ const NavBar = () => {
         </div>
         <div className=" hidden lg:flex">
           <ul className="menu menu-horizontal px-1 space-x-7">
-            <Link to="/">Home</Link>
-            <Link to="/allToys">All Toys</Link>
-            <Link to="/myToys">My Toys</Link>
-            <Link to="/addAToys">Add A Toys</Link>
-            <Link to="/blog">Blog</Link>
-            <Link to="/login">Login</Link>
-            <Link to="/registration">Registration</Link>
+            <ActiveLink to="/">Home</ActiveLink>
+            <ActiveLink to="/allToys">All Toys</ActiveLink>
+            {user && <ActiveLink to="/myToys">My Toys</ActiveLink>}
+            <ActiveLink to="/addAToys">Add A Toys</ActiveLink>
+            <ActiveLink to="/blog">Blog</ActiveLink>
+            <ActiveLink to="/login">Login</ActiveLink>
+            <ActiveLink to="/registration">Registration</ActiveLink>
           </ul>
         </div>
         <div className="flex gap-3">
