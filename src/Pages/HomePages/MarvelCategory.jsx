@@ -1,6 +1,9 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const MarvelCategory = ({ category }) => {
+  //   const { photo, toyName, price } = category;
+  console.log(category);
   return (
     <>
       <div className="card w-96 h-100% bg-base-100 shadow-2xl">
@@ -8,10 +11,14 @@ const MarvelCategory = ({ category }) => {
           <img src={category?.photo} alt="Shoes" className="rounded-xl" />
         </figure>
         <div className="card-body items-center text-center">
-          <h2 className="card-title">Shoes!</h2>
-          <p>If a dog chews shoes whose shoes does he choose?</p>
+          <h2 className="card-title">{category?.toyName}</h2>
+          <h2 className="card-title">{category?.price}</h2>
+          <h2 className="card-title">{category?.rating}</h2>
+
           <div className="card-actions">
-            <button className="btn btn-primary">Buy Now</button>
+            <Link to={`/viewDetails/${category._id}`}>
+              <button className="btn btn-accent">View Details</button>
+            </Link>
           </div>
         </div>
       </div>
