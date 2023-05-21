@@ -5,19 +5,48 @@ import "react-tabs/style/react-tabs.css";
 import bgImg from "../../assets/bgimg.jpg";
 import { Link } from "react-router-dom";
 import MarvelCategory from "./MarvelCategory";
+import Avengers from "./Avengers";
+import Transformers from "./Transformers";
 
 const Home = () => {
-  const [categorys, setCategory] = useState([]);
+  const [marvelCategory, setMarvelCategory] = useState([]);
+  const [avengers, setAvengers] = useState([]);
+  const [transformers, setTransformer] = useState([]);
   const [photos, setPhotos] = useState(true);
 
+  const url = "https://assignment-11-server-site-kappa.vercel.app/alltoys";
   useEffect(() => {
-    fetch("https://assignment-11-server-site-kappa.vercel.app/alltoys")
+    fetch(url)
       .then((res) => res.json())
       .then((data) => {
         setPhotos(data.map((d) => d?.photo));
-        setCategory(data);
+        const cate = data.filter((dat) => dat.category == "marvel");
+
+        setMarvelCategory(cate);
       });
   }, []);
+
+  useEffect(() => {
+    fetch(url)
+      .then((res) => res.json())
+      .then((data) => {
+        const cate = data.filter((dat) => dat.category == "avengers");
+
+        setAvengers(cate);
+      });
+  }, []);
+
+  useEffect(() => {
+    fetch(url)
+      .then((res) => res.json())
+      .then((data) => {
+        // console.log(data);
+        const cate = data.filter((dat) => dat.category == "transformers");
+
+        setTransformer(cate);
+      });
+  }, []);
+
   return (
     <div className="">
       <img className="my-4 w-full h-96 object-cover " src={bgImg} alt="" />
@@ -45,7 +74,7 @@ const Home = () => {
 
           <TabPanel>
             <div className="grid lg:grid-cols-3 gap-5">
-              {categorys.map((category) => (
+              {marvelCategory.map((category) => (
                 <MarvelCategory
                   key={category._id}
                   category={category}
@@ -54,10 +83,21 @@ const Home = () => {
             </div>
           </TabPanel>
           <TabPanel>
-            <h2>Any content 2</h2>
+            <div className="grid lg:grid-cols-3 gap-5">
+              {avengers.map((avenger) => (
+                <Avengers key={avenger._id} avenger={avenger}></Avengers>
+              ))}
+            </div>
           </TabPanel>
           <TabPanel>
-            <h2>Any content 3</h2>
+            <div className="grid lg:grid-cols-3 gap-5">
+              {transformers.map((transformer) => (
+                <Transformers
+                  key={transformer._id}
+                  transformer={transformer}
+                ></Transformers>
+              ))}
+            </div>
           </TabPanel>
         </Tabs>
       </div>

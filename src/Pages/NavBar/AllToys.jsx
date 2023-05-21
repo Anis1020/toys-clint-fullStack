@@ -6,6 +6,7 @@ import { toast } from "react-toastify";
 const AllToys = () => {
   const allToy = useLoaderData();
   const [alltoys, setAllToys] = useState(allToy);
+  const [counts, setCounts] = useState(0);
 
   const handleDelete = (id) => {
     fetch(`https://assignment-11-server-site-kappa.vercel.app/delete/${id}`, {
@@ -21,9 +22,16 @@ const AllToys = () => {
         }
       });
   };
+
+  const handleCount = () => {
+    setCounts((count) => count + 1);
+  };
+
   return (
     <>
       <div className="overflow-x-auto">
+        {/* search functionality */}
+
         <div className="text-center my-8 space-x-4">
           <input
             className="p-2 rounded-full"
@@ -33,6 +41,7 @@ const AllToys = () => {
             placeholder="type-here"
           />
           <input
+            onClick={handleCount}
             className="p-2 px-6 btn rounded-full"
             type="submit"
             value="Search"
@@ -42,7 +51,7 @@ const AllToys = () => {
           {/* head */}
           <thead>
             <tr>
-              <th></th>
+              <th>Count</th>
               <th>Seller</th>
               <th>Toy Name</th>
               <th>sub-Category</th>
@@ -53,7 +62,8 @@ const AllToys = () => {
           </thead>
           {alltoys.map((toy, index) => (
             <SingleToy
-              key={allToy._id}
+              index={index++}
+              key={toy._id}
               toy={toy}
               handleDelete={handleDelete}
             ></SingleToy>

@@ -16,6 +16,7 @@ const LoginPage = () => {
     const email = form.email.value;
     const password = form.password.value;
     console.log(email, password);
+
     loginUser(email, password)
       .then((result) => {
         console.log("wrig info", result.user);
@@ -56,7 +57,7 @@ const LoginPage = () => {
               <span className="label-text text-black">Password</span>
             </label>
             <input
-              type="text"
+              type="password"
               name="password"
               placeholder="password"
               className="input input-bordered"

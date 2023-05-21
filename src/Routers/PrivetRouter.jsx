@@ -6,6 +6,10 @@ const PrivetRouter = ({ children }) => {
   const { user, loading } = useContext(AuthContext);
   const location = useLocation();
 
+  if (!user) {
+    alert("You have to log in first to view details");
+  }
+
   if (loading) {
     return <progress className="progress bg-red-600 w-56"></progress>;
   }

@@ -15,9 +15,10 @@ const ViewDetails = () => {
     quantity,
     rating,
     photo,
+    email,
   } = singleData;
   console.log(singleData);
-  console.log(id);
+
   return (
     <div>
       <div className="card lg:card-side bg-base-100 shadow-xl my-8 ">
@@ -30,6 +31,7 @@ const ViewDetails = () => {
           <h2 className="card-title">Price: ${price}</h2>
           <h2 className="card-title">Available Quantity: {quantity}</h2>
           <h2 className="card-title">Rating: {rating}</h2>
+          <h2 className="card-title">Seller Email: {email}</h2>
 
           <p>Description: {description}</p>
         </div>

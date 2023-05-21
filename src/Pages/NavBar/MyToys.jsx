@@ -1,5 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../Routers/AuthProvider";
+import { Link } from "react-router-dom";
 
 const MyToys = () => {
   const { user } = useContext(AuthContext);
@@ -13,10 +14,14 @@ const MyToys = () => {
         setMyToys(data);
       });
   }, []);
+
   return (
     <div className=" shadow-2xl grid md:grid-cols-3 my-8 gap-8">
       {myToys.map((toy) => (
-        <div className="card card-compact  w-full bg-base-100 shadow-xl">
+        <div
+          className="card card-compact  w-full bg-base-100 shadow-xl"
+          // key={toy._id}
+        >
           <figure>
             <img src={toy?.photo} alt="Shoes" />
           </figure>
@@ -26,7 +31,9 @@ const MyToys = () => {
             <p>Quantity: {toy?.quantity}</p>
             <p>Description: {toy?.description}</p>
             <div className="card-actions justify-around my-5">
-              <button className="btn btn-primary">Edit Now</button>
+              <Link to="/update">
+                <button className="btn btn-primary">Edit Now</button>
+              </Link>
               <button className="btn btn-primary">Delete</button>
             </div>
           </div>

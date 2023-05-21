@@ -10,6 +10,7 @@ import LoginPage from "../Pages/NavBar/LoginPage";
 import Registration from "../Pages/NavBar/Registration";
 import PrivetRouter from "./PrivetRouter";
 import ViewDetails from "../Pages/ViewDetails";
+import EditToy from "../Components/EditToy";
 
 const router = createBrowserRouter([
   {
@@ -56,6 +57,12 @@ const router = createBrowserRouter([
           fetch(
             `https://assignment-11-server-site-kappa.vercel.app/alltoys/${params._id}`
           ),
+      },
+      {
+        path: "update",
+        element: <EditToy></EditToy>,
+        loader: ({ params }) =>
+          fetch("https://assignment-11-server-site-kappa.vercel.app/alltoys"),
       },
       {
         path: "login",

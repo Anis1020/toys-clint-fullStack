@@ -5,12 +5,15 @@ import "react-toastify/dist/ReactToastify.css";
 
 const SingleToy = ({ toy, handleDelete }) => {
   const { seller, category, price, quantity, toyName, _id, photo } = toy;
-  let counts = 0;
+
+  // const [counts, setCounts] = useState(1);
+  // let count = 1;
+  // setCounts((count) => count + 1);
   return (
     <>
       <tbody>
         <tr>
-          <th>{counts + 1}</th>
+          <td>{}</td>
           <td>{seller}</td>
           <td>{toyName}</td>
           <td>{category}</td>
