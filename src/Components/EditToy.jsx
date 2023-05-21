@@ -1,9 +1,36 @@
 import React from "react";
-import { useLoaderData } from "react-router-dom";
+import { useLoaderData, useParams } from "react-router-dom";
 
 const EditToy = () => {
+  // const id = useParams();
   const updateData = useLoaderData();
   //   console.log(updateData.map((update) => <span>{update.toyName}</span>));
+  console.log(updateData);
+
+  // const handleUpdate = (event) => {
+  //   event.preventDefault();
+  //   const form = event.value;
+  //   const price = form.price.value;
+  //   const quantity = form.quantity.value;
+  //   const description = form.description.value;
+  //   const updateData = {
+  //     price,
+  //     quantity,
+  //     description,
+  //   };
+  //   fetch(`http://localhost:5000/updateToy/${alltoys._id}`, {
+  //     method: "PATCh",
+  //     headers: {
+  //       "content-type": "application/json",
+  //     },
+  //     body: JSON.stringify(updateData),
+  //   })
+  //     .then((res) => res.json())
+  //     .then((data) => {
+  //       console.log(data);
+  //     });
+  // };
+
   return (
     <div>
       <form>

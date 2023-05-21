@@ -3,17 +3,14 @@ import { Link } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-const SingleToy = ({ toy, handleDelete }) => {
+const SingleToy = ({ toy, handleDelete, index }) => {
   const { seller, category, price, quantity, toyName, _id, photo } = toy;
 
-  // const [counts, setCounts] = useState(1);
-  // let count = 1;
-  // setCounts((count) => count + 1);
   return (
     <>
       <tbody>
         <tr>
-          <td>{}</td>
+          <td>{index + 1}</td>
           <td>{seller}</td>
           <td>{toyName}</td>
           <td>{category}</td>
@@ -23,10 +20,10 @@ const SingleToy = ({ toy, handleDelete }) => {
             <Link to={`/viewDetails/${_id}`}>
               <button className="btn btn-accent">View Details</button>
             </Link>
-
-            {/* <a href="#my-modal-2" className="btn">
-                View Details{" "}
-              </a> */}
+            {/* 
+            <a href="#my-modal-2" className="btn">
+              View Details{" "}
+            </a> */}
 
             <button
               onClick={() => handleDelete(_id)}
@@ -40,14 +37,52 @@ const SingleToy = ({ toy, handleDelete }) => {
       </tbody>
 
       {/* modal start here */}
-      {/* <div className="modal" id="my-modal-2">
-        <div className="modal-box">
-          <img src={photo} alt="" />
-          <h3 className="font-bold text-lg">seller name: {seller}</h3>
-          <p className="py-4">
-            You've been selected for a chance to get one year of subscription to
-            use Wikipedia for free!
-          </p>
+      {/* <div className="modal w-full" id="my-modal-2">
+        <div className="modal-box ">
+          <img className="w-full " src={photo} alt="" />
+          <form onSubmit={handleUpdate}>
+            <div className="card-body w-full m-auto grid grid-cols-2">
+              <div className="form-control">
+                <label className="label">
+                  <span className="label-text">Price</span>
+                </label>
+                <input
+                  type="text"
+                  name="price"
+                  defaultValue={price}
+                  className="input input-bordered"
+                />
+              </div>
+              <div className="form-control">
+                <label className="label">
+                  <span className="label-text">Quantity</span>
+                </label>
+                <input
+                  type="text"
+                  name="quantity"
+                  defaultValue={quantity}
+                  className="input input-bordered"
+                />
+              </div>{" "}
+            </div>
+            <div className="form-control px-7">
+              <label className="label">
+                <span className="label-text">Description</span>
+              </label>
+              <textarea
+                name="description"
+                type="text"
+                // defaultValue={description}
+                className="input input-bordered"
+                id=""
+                cols="30"
+                rows="10"
+              ></textarea>
+            </div>
+            <div className="form-control mt-6 px-7">
+              <input type="submit" value="Update" className="btn btn-primary" />
+            </div>
+          </form>
           <div className="modal-action">
             <a href="#" className="btn">
               close

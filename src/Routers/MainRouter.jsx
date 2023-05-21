@@ -61,7 +61,7 @@ const router = createBrowserRouter([
       {
         path: "update",
         element: <EditToy></EditToy>,
-        loader: ({ params }) =>
+        loader: () =>
           fetch("https://assignment-11-server-site-kappa.vercel.app/alltoys"),
       },
       {

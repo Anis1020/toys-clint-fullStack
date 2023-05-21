@@ -20,7 +20,7 @@ const MyToys = () => {
       {myToys.map((toy) => (
         <div
           className="card card-compact  w-full bg-base-100 shadow-xl"
-          // key={toy._id}
+          key={toy._id}
         >
           <figure>
             <img src={toy?.photo} alt="Shoes" />
@@ -31,6 +31,7 @@ const MyToys = () => {
             <p>Quantity: {toy?.quantity}</p>
             <p>Description: {toy?.description}</p>
             <div className="card-actions justify-around my-5">
+              {/* {`/update/:${toy._id}`} */}
               <Link to="/update">
                 <button className="btn btn-primary">Edit Now</button>
               </Link>

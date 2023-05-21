@@ -5,6 +5,7 @@ import "react-toastify/dist/ReactToastify.css";
 
 const AddAToys = () => {
   const { user } = useContext(AuthContext);
+  
   const handleAddToys = (event) => {
     event.preventDefault();
     const form = event.target;
